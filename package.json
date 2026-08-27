@@ -2,10 +2,21 @@
   "name": "@findsaunaplunge/mcp",
   "version": "1.0.1",
   "private": true,
-  "description": "MCP server for findsaunaplunge.com — cold plunge, sauna and contrast-therapy venues across US metros, each fact dated and source-quoted.",
+  "description": "MCP server for findsaunaplunge.com \u2014 cold plunge, sauna and contrast-therapy venues across US metros, each fact dated and source-quoted.",
   "type": "module",
   "homepage": "https://findsaunaplunge.com/mcp",
-  "repository": { "type": "git", "url": "https://github.com/findsaunaplunge/mcp" },
-  "keywords": ["mcp", "model-context-protocol", "sauna", "cold-plunge", "wellness", "dataset"],
-  "mcpName": "com.findsaunaplunge/findsaunaplunge"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/findsaunaplunge/mcp"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "sauna",
+    "cold-plunge",
+    "wellness",
+    "dataset"
+  ],
+  "mcpName": "com.findsaunaplunge/findsaunaplunge",
+  "license": "MIT"
 }

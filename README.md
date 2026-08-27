@@ -38,3 +38,7 @@ This repository is the published source of that server. The site itself is not o
 - Stateless: no sessions, no server-initiated SSE. Every `POST` is self-contained.
 - Unknown arguments are rejected with a message naming the valid ones, rather than silently ignored.
 - Nothing here is, or will be, a paid placement.
+
+## Licence
+
+MIT — see [LICENSE](LICENSE). The venue data the server serves is separately licensed CC BY 4.0.
