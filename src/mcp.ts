@@ -374,11 +374,14 @@ function runTool(name: string, args: Record<string, unknown>, feed: Feed): unkno
  * ------------------------------------------------------------------ */
 
 class JsonRpcError extends Error {
-  constructor(
-    public code: number,
-    message: string,
-  ) {
+  // A plain field, not a `public code` parameter property: Node runs this
+  // file natively in strip-only mode (the standalone runner in
+  // github.com/findsaunaplunge/mcp), and strip-only rejects parameter
+  // properties. wrangler's bundler never minded; keep the two copies identical.
+  code: number;
+  constructor(code: number, message: string) {
     super(message);
+    this.code = code;
   }
 }
 
