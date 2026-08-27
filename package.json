@@ -18,5 +18,12 @@
     "dataset"
   ],
   "mcpName": "com.findsaunaplunge/findsaunaplunge",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/serve.ts",
+    "stdio": "node src/serve.ts --stdio"
+  },
+  "engines": {
+    "node": ">=24"
+  }
 }

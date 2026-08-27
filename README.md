@@ -27,6 +27,18 @@ curl -s -X POST https://findsaunaplunge.com/mcp -H 'Content-Type: application/js
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"search_venues","arguments":{"citySlug":"austin-tx","modality":"cold_plunge","limit":3}}}'
 ```
 
+## Run it yourself
+
+The handler needs nothing but the public feed, so it runs anywhere with Node 24+:
+
+```bash
+node src/serve.ts            # Streamable HTTP on :8080 — POST /mcp
+node src/serve.ts --stdio    # JSON-RPC over stdio, one message per line
+docker build -t findsaunaplunge-mcp . && docker run -i findsaunaplunge-mcp   # stdio
+```
+
+Both modes read `https://findsaunaplunge.com/api/v1/venues.json` (override with `FINDSAUNAPLUNGE_ORIGIN`), so a self-hosted copy serves exactly what the site serves.
+
 ## How it runs
 
 `src/mcp.ts` is the whole server: one `handleMcp(request, env)` function mounted at `/mcp` inside the site's Cloudflare Worker. It has no dependencies. Tool results come from the static `/api/v1/venues.json` asset produced by the site build (fetched through the Worker's `ASSETS` binding and memoized per isolate), so the server can never disagree with the site and a deploy refreshes it automatically. `server.json` is the registry manifest.
