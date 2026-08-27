@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "name": "com.findsaunaplunge/findsaunaplunge",
+  "title": "FindSaunaPlunge — US cold plunge & sauna studios",
+  "description": "Cold plunge, sauna and contrast-therapy studios across US metros, each fact dated.",
+  "version": "1.0.0",
+  "websiteUrl": "https://findsaunaplunge.com/api/",
+  "repository": {
+    "url": "https://github.com/findsaunaplunge/mcp",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://findsaunaplunge.com/mcp"
+    }
+  ]
+}
