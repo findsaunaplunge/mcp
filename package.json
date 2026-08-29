@@ -20,8 +20,9 @@
   "mcpName": "com.findsaunaplunge/findsaunaplunge",
   "license": "MIT",
   "scripts": {
-    "start": "node src/serve.ts",
+    "start": "node src/serve.ts --stdio",
     "stdio": "node src/serve.ts --stdio",
+    "http": "node src/serve.ts",
     "test": "node test/smoke.ts"
   },
   "engines": {

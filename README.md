@@ -34,8 +34,8 @@ curl -s -X POST https://findsaunaplunge.com/mcp -H 'Content-Type: application/js
 The handler needs nothing but the public feed, so it runs anywhere with Node 24+:
 
 ```bash
-node src/serve.ts            # Streamable HTTP on :8080 — POST /mcp
-node src/serve.ts --stdio    # JSON-RPC over stdio, one message per line
+npm start                    # JSON-RPC over stdio, one message per line (= node src/serve.ts --stdio)
+npm run http                 # Streamable HTTP on :8080 — POST /mcp        (= node src/serve.ts)
 docker build -t findsaunaplunge-mcp . && docker run -i findsaunaplunge-mcp   # stdio
 npm test                     # smoke test: stdio + HTTP against the live feed
 ```
