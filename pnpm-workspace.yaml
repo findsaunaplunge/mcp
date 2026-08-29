@@ -1,0 +1,3 @@
+# pnpm settings only — this is a single package, not a workspace.
+# Silence the "> script" banner so `pnpm run start` writes nothing but JSON-RPC to stdout.
+reporter: silent
