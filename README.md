@@ -1,5 +1,7 @@
 # FindSaunaPlunge MCP server
 
+[![CI](https://github.com/findsaunaplunge/mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/findsaunaplunge/mcp/actions/workflows/ci.yml) [![findsaunaplunge/mcp MCP server](https://glama.ai/mcp/servers/findsaunaplunge/mcp/badges/score.svg)](https://glama.ai/mcp/servers/findsaunaplunge/mcp)
+
 Model Context Protocol server for [findsaunaplunge.com](https://findsaunaplunge.com): cold plunge, sauna and contrast-therapy venues across 23 US metros (548 venues, August 2026). Every published temperature and price is read from the venue's own pages and carries its source URL, capture date and verbatim quote. **Absent fields mean the venue does not publish that detail — never zero.**
 
 - **Endpoint:** `https://findsaunaplunge.com/mcp` — Streamable HTTP, stateless, no auth, open CORS. `GET` serves human documentation; `POST` is JSON-RPC.
@@ -35,6 +37,7 @@ The handler needs nothing but the public feed, so it runs anywhere with Node 24+
 node src/serve.ts            # Streamable HTTP on :8080 — POST /mcp
 node src/serve.ts --stdio    # JSON-RPC over stdio, one message per line
 docker build -t findsaunaplunge-mcp . && docker run -i findsaunaplunge-mcp   # stdio
+npm test                     # smoke test: stdio + HTTP against the live feed
 ```
 
 Both modes read `https://findsaunaplunge.com/api/v1/venues.json` (override with `FINDSAUNAPLUNGE_ORIGIN`), so a self-hosted copy serves exactly what the site serves.

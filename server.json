@@ -3,7 +3,7 @@
   "name": "com.findsaunaplunge/findsaunaplunge",
   "title": "FindSaunaPlunge — US cold plunge & sauna studios",
   "description": "Cold plunge, sauna and contrast-therapy studios across US metros, each fact dated.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "websiteUrl": "https://findsaunaplunge.com/api/",
   "repository": {
     "url": "https://github.com/findsaunaplunge/mcp",

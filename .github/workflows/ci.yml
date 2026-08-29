@@ -1,0 +1,45 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: '0 6 * * 2' # Tuesdays 06:00 UTC — proves the live feed still answers
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  smoke:
+    name: Smoke test (stdio + HTTP, live feed)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node --version
+      - run: npm test
+
+  docker:
+    name: Docker build + stdio introspection
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t findsaunaplunge-mcp .
+      - name: Introspect the container over stdio, the way registries do
+        run: |
+          printf '%s\n' \
+            '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2025-06-18","capabilities":{},"clientInfo":{"name":"ci","version":"0"}}}' \
+            '{"jsonrpc":"2.0","id":2,"method":"tools/list"}' \
+            | docker run -i --rm findsaunaplunge-mcp > out.jsonl
+          node -e '
+            const lines = require("fs").readFileSync("out.jsonl", "utf8").trim().split("\n").map(JSON.parse);
+            const tools = lines.find((m) => m.id === 2).result.tools.map((t) => t.name);
+            const want = ["search_venues", "get_venue", "list_cities", "get_city_stats", "get_data_freshness"];
+            const missing = want.filter((w) => !tools.includes(w));
+            if (missing.length) { console.error("missing tools: " + missing.join(", ")); process.exit(1); }
+            console.log("container tools: " + tools.join(", "));
+          '

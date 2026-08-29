@@ -30,7 +30,7 @@ export interface McpEnv {
 const SERVER_INFO = {
   name: 'findsaunaplunge',
   title: 'FindSaunaPlunge — US cold plunge & sauna studios, checked and dated',
-  version: '1.0.0',
+  version: '1.0.1',
 };
 
 /** Protocol revisions we know; echo the client's if recognised. */

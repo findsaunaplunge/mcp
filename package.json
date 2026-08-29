@@ -2,7 +2,7 @@
   "name": "@findsaunaplunge/mcp",
   "version": "1.0.1",
   "private": true,
-  "description": "MCP server for findsaunaplunge.com \u2014 cold plunge, sauna and contrast-therapy venues across US metros, each fact dated and source-quoted.",
+  "description": "MCP server for findsaunaplunge.com — cold plunge, sauna and contrast-therapy venues across US metros, each fact dated and source-quoted.",
   "type": "module",
   "homepage": "https://findsaunaplunge.com/mcp",
   "repository": {
@@ -21,7 +21,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node src/serve.ts",
-    "stdio": "node src/serve.ts --stdio"
+    "stdio": "node src/serve.ts --stdio",
+    "test": "node test/smoke.ts"
   },
   "engines": {
     "node": ">=24"
