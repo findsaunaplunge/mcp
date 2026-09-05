@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/findsaunaplunge/mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/findsaunaplunge/mcp/actions/workflows/ci.yml) [![findsaunaplunge/mcp MCP server](https://glama.ai/mcp/servers/findsaunaplunge/mcp/badges/score.svg)](https://glama.ai/mcp/servers/findsaunaplunge/mcp)
 
-Model Context Protocol server for [findsaunaplunge.com](https://findsaunaplunge.com): cold plunge, sauna and contrast-therapy venues across 23 US metros (548 venues, August 2026). Every published temperature and price is read from the venue's own pages and carries its source URL, capture date and verbatim quote. **Absent fields mean the venue does not publish that detail — never zero.**
+Model Context Protocol server for [findsaunaplunge.com](https://findsaunaplunge.com): cold plunge, sauna and contrast-therapy venues across US metros. `get_data_freshness` reports the current venue count and the dates the records were last checked. Every published temperature and price is read from the venue's own pages and carries its source URL, capture date and verbatim quote. **Absent fields mean the venue does not publish that detail — never zero.**
 
 - **Endpoint:** `https://findsaunaplunge.com/mcp` — Streamable HTTP, stateless, no auth, open CORS. `GET` serves human documentation; `POST` is JSON-RPC.
 - **Registry:** [`com.findsaunaplunge/findsaunaplunge`](https://registry.modelcontextprotocol.io) (domain-verified).
