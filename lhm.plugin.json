@@ -1,0 +1,126 @@
+{
+  "identifier": "findsaunaplunge",
+  "name": "FindSaunaPlunge",
+  "version": "1.0.1",
+  "description": "Cold plunge, sauna and contrast-therapy studios across US metros. Every venue record carries the date it was last checked; every published price and temperature carries its source URL, capture date and quote. Absent fields mean the studio does not publish that detail, never zero.",
+  "author": "FindSaunaPlunge",
+  "authorUrl": "https://github.com/findsaunaplunge",
+  "homepage": "https://findsaunaplunge.com/mcp",
+  "cloudEndpoint": "https://findsaunaplunge.com/mcp",
+  "icon": "https://findsaunaplunge.com/apple-touch-icon.png",
+  "tags": [
+    "sauna",
+    "cold-plunge",
+    "contrast-therapy",
+    "recovery",
+    "wellness",
+    "venues",
+    "dataset"
+  ],
+  "tools": [
+    {
+      "name": "search_venues",
+      "title": "Search venues",
+      "description": "Search cold plunge / sauna venues. All filters are optional and AND-combined. Absent fields in results mean \"not published\", never zero.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Substring match on venue name (case-insensitive)."
+          },
+          "citySlug": {
+            "type": "string",
+            "description": "City slug, e.g. \"dallas-tx\". Use list_cities to discover."
+          },
+          "modality": {
+            "type": "string",
+            "enum": [
+              "cold_plunge",
+              "traditional_sauna",
+              "infrared_sauna",
+              "steam_room",
+              "cryotherapy",
+              "red_light",
+              "pemf",
+              "compression",
+              "float"
+            ],
+            "description": "Venue must offer this modality."
+          },
+          "access": {
+            "type": "string",
+            "enum": [
+              "private_suite",
+              "communal",
+              "mixed"
+            ],
+            "description": "private_suite = your own room; communal = shared areas; mixed matches either request. Venues that do not publish their access model are excluded whenever this filter is used — absence of the fact is not a match."
+          },
+          "maxDropInUsd": {
+            "type": "number",
+            "description": "Only venues with a PUBLISHED drop-in price at or below this. Excludes venues with no published price."
+          },
+          "limit": {
+            "type": "number",
+            "description": "Max results, default 10, cap 25."
+          }
+        }
+      }
+    },
+    {
+      "name": "get_venue",
+      "title": "Get one venue",
+      "description": "Fetch the full record for one venue by its stable id.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Venue id, e.g. \"alive-and-well-dallas-tx\"."
+          }
+        },
+        "required": [
+          "id"
+        ]
+      }
+    },
+    {
+      "name": "list_cities",
+      "title": "List covered cities",
+      "description": "Cities with live venues, with counts and available modalities.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    },
+    {
+      "name": "get_city_stats",
+      "title": "Get city statistics",
+      "description": "Aggregate figures for one covered city: venue count, modality and access breakdowns, contrast-capable count, and median published prices and plunge temperature. Every median carries its denominator (n) — absent fields are excluded, never treated as zero.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "citySlug": {
+            "type": "string",
+            "description": "City slug, e.g. \"dallas-tx\". Use list_cities to discover."
+          }
+        },
+        "required": [
+          "citySlug"
+        ]
+      }
+    },
+    {
+      "name": "get_data_freshness",
+      "title": "Get dataset freshness",
+      "description": "When the dataset was generated and how recently venues were checked: oldest and newest lastVerified dates, counts by age bucket, and the newest check date per city.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {}
+      }
+    }
+  ],
+  "resources": [],
+  "prompts": []
+}
