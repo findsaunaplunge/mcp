@@ -1,5 +1,5 @@
 {
-  "identifier": "findsaunaplunge",
+  "identifier": "findsaunaplunge-mcp",
   "name": "FindSaunaPlunge",
   "version": "1.0.1",
   "description": "Cold plunge, sauna and contrast-therapy studios across US metros. Every venue record carries the date it was last checked; every published price and temperature carries its source URL, capture date and quote. Absent fields mean the studio does not publish that detail, never zero.",
